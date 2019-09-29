@@ -3,13 +3,13 @@ class a4q11
 	public static void main(String args[])
 	{
 		int s1=0;
-		for(int a=1; a<=10; a++)
+		for(int a=1; a<=100; a++)
 		{
 			s1=s1+a*a;
 		}
 		System.out.println("The sum if the squares of the first ten natural numbers is, "+s1);
 		int s2=0;
-		for(int a=1; a<=10; a++)
+		for(int a=1; a<=100; a++)
 		{
 			s2=s2+a;
 		}
