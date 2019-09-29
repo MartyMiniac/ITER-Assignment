@@ -14,7 +14,7 @@ class a3q13
 			System.out.print("January "+b+" has 31 days");
 			break;
 		case 2:
-			if(b%4==0 && b%100!=0 && b%400!=0)
+			if(b%4==0 && (b%100!=0 || b%400!=0))
 			System.out.print("Febuary "+b+" has 29 days");
 			else
 			System.out.print("Febuary "+b+" has 28 days");
