@@ -11,11 +11,11 @@ class a4q2
 		for(int a=1; a<=i; a++)
 		{
 			System.out.print(a);
-			if(a==1 || a%10==1 || a%100==1)
+			if(a%10==1 && a%100!=11)
 				System.out.print("st ");
-			else if(a==2 || a%10==2 || a%100==2)
+			else if(a%10==2 && a%100!=12)
 				System.out.print("nd ");
-			else if(a==3 || a%10==3 || a%100==3)
+			else if(a%10==3 && a%100!=13)
 				System.out.print("rd ");
 			else
 				System.out.print("th ");
