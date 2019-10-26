@@ -7,7 +7,8 @@ class a5q11
 		System.out.print("Enter the Value x : ");
 		double x=in.nextDouble();
 		double ans=0;
-		for(int n=0; n<=20; n++)
+		int n=0;
+		while(true)
 		{
 			int t=2*n;
 			double f=1;
@@ -15,10 +16,13 @@ class a5q11
 			{
 				f=f*a;
 			}
+			if((Math.pow(x,t)/f)<Math.pow(10,-6))
+			break;
 			if(n%2==0)
 			ans=ans+Math.pow(x,t)/f;
 			else
 			ans=ans-Math.pow(x,t)/f;
+			n++;
 		}
 		System.out.println("cos("+x+")="+ans);
 	}
