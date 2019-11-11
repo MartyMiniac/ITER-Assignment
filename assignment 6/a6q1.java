@@ -46,7 +46,10 @@ class a6q1
 	}
 	public static double divisionSimple(int x,int y)
 	{
-		return (double)x/(double)y;
+		if(x!=0)
+			return (double)y/(double)x;
+		else
+			return 0;
 	}
 	public static int remainderSimple(int n, int m)
 	{
