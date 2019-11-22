@@ -12,9 +12,9 @@ class a7q5
 			System.out.print("arr["+a+"]=");
 			arr[a]=in.nextInt();
 		}
-		for(int a=0; a<n; a++)
+		for(int a=0; a<(n-1); a++)
 		{
-			for(int b=0; b<a; b++)
+			for(int b=0; b<(n-a-1); b++)
 			{
 				if(arr[b]>arr[b+1])
 				{
