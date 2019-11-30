@@ -13,7 +13,7 @@ class a8q4
 		{
 			for(int b=0; b<arr[a].length; b++)
 			{
-				arr[a][b]=(int)(Math.random()*11);
+				arr[a][b]=(int)(Math.random()*10);
 			}
 		}
 		int arrn[][]=arr.clone();
