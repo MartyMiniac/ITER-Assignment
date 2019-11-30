@@ -31,13 +31,21 @@ class a7q8
 					int i=in.nextInt();
 					System.out.print("Enter the position number to Insert :");
 					int p=in.nextInt();
+					for(int a=arr.length-2; a>=p; a--)
+					{
+						arr[a+1]=arr[a];
+					}
 					arr[p]=i;
 					break;
 				case 'c':
 					System.out.print("Enter the Position Number to Delete :");
 					int ps=in.nextInt();
 					System.out.println(arr[ps]+" at position number "+ps+" deleted");
-					arr[ps]=0;
+					for(int a=ps; a<arr.length-1; a++)
+					{
+						arr[a]=arr[a+1];
+					}
+					arr[arr.length-1]=0;
 					break;
 				case 'd':
 					k=false;
