@@ -1,9 +1,34 @@
 import java.util.*;
-public class program
+public class Student
 {
+	String name;
+	int roll,qty;
+	Date issueDate, returnDate;
+	Student()
+	{
+		name="";
+		roll=0;
+		qty=0;
+	}
 	public static void main(String args[])
 	{
-
+		
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public int getRoll()
+	{
+		return roll;
+	}
+	public void issueBook()
+	{
+		
+	}
+	public void depositBook()
+	{
+		
 	}
 }
 class Author
@@ -83,5 +108,37 @@ class Book
 	public String toString()
 	{
 		return "[name="+name+",Author="+author.toString()+"price="+price+",quantity="+qty+"]";
+	}
+}
+class Date
+{
+	int dd, mm, yyyy;
+	Date(int dd, int mm, int yyyy)
+	{
+		this.dd=dd;
+		this.mm=mm;
+		this.yyyy=yyyy;
+	}
+	Date()
+	{
+		dd=0;
+		mm=0;
+		yyyy=0;
+	}
+	public int getDD()
+	{
+		return dd;
+	}
+	public int getMM()
+	{
+		return mm;
+	}
+	public int getYYYY()
+	{
+		return yyyy;
+	}
+	public String toString()
+	{
+		return "[DD="dd+",MM="+mm+",YYYY="+yyyy+"]";
 	}
 }
