@@ -1,6 +1,16 @@
+/*
+	Created By Rohan Verma
+	Created using Java 13.0.2
+	Softwares used Sublime 3 Text Editor
+	Compiled Using terminal
+	Default Java Library used
+
+*/
 import java.util.*;
 public class Program
 {
+	final public String programAuthorName="Rohan Verma";
+	final public String registrationNumber="1941012661";
 	Books b[] = new Books[10];
 	Student student[];
 	public static void main(String args[])
@@ -190,7 +200,6 @@ class Student
 			{
 				n=i;
 				System.out.println("Book Found Getting an Issue");
-				addBook(b[n]);
 				break;
 			}
 		}
@@ -199,7 +208,9 @@ class Student
 			int t=b[n].getQty();
 			if(t!=0)
 			{
+				//System.out.println("quantity reduced from "+t);
 				b[n].setQty(t-1);
+				addBook(b[n]);
 				return true;
 			}
 			else
@@ -250,17 +261,17 @@ class Student
 	public boolean returnBook(String s)
 	{
 		int n=-1;
-		for(int i=0; i<10; i++)
+		for(int i=0; i<list.length; i++)
 		{
 			int t=-1;
-			String nm=b[i].getName();
+			String nm=list[i].getName();
 			if(nm.equalsIgnoreCase(s))
 			{
 				t=i;
 			}
 			try
 			{
-				if(removeBook(b[t]))
+				if(removeBook(list[t]))
 				{
 					n=i;
 					System.out.println("Book Found, Unissueing");
@@ -312,8 +323,7 @@ class Student
 			{
 				//throw exception because the object not initalized
 				System.out.println("Book Added to Issue List");
-				list[i] = bk;
-				list[i].setQty(1);
+				list[i] = new Books(bk.getName(), bk.getAuthor(), bk.getPrice(), 1);
 				break;
 			}
 		}
