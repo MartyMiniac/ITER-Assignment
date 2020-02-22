@@ -10,21 +10,14 @@ class a3q1
 		{
 			if(i<0)
 			{
-				throw new MyException("NumberFormatException");
+				throw new NumberFormatException("NumberFormatException");
 			}
 			System.out.println("Your Lucky Number is "+i);
 		}
-		catch(MyException e)
+		catch(NumberFormatException e)
 		{
 			System.out.println("Not That Lucky !! Seems you encounter an Exception !!");
 			System.out.println(e);
 		}
 	}
-}
-class MyException extends Exception
-{		   
-	   MyException(String str)
-	   {
-		   super(str);
-	   }
 }
