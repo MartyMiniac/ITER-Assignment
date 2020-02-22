@@ -12,12 +12,19 @@ public class Student
 		try
 		{
 			if(marks>100)
-				throw new NumberFormatException("MarksOutOfBoundException");
+				throw new MarksOutOfBoundException("Marks cannot be more than 100");
 			System.out.println(name+", you obtained "+marks+" marks");
 		}
-		catch(NumberFormatException e)
+		catch(MarksOutOfBoundException e)
 		{
-			System.out.println(e+": Marks cannot be more than 100");
+			System.out.println(e);
 		}
+	}
+}
+class MarksOutOfBoundException extends Exception
+{
+	MarksOutOfBoundException(String s)
+	{
+		super(s);
 	}
 }
