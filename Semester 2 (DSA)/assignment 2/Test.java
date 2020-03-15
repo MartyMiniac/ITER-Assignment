@@ -9,12 +9,20 @@ abstract class Employee
 {
 	String empID, fName;
 	double salary;
+	Employee(String empID, String fName, double salary)
+	{
+		this.empID=empID;
+		this.fName=fName;
+		this.salary=salary;
+	}
 }
 class Manager extends Employee implements EmpInterface
 {
 	double bonus;
-	String empID, fName;
-	double salary;
+	Manager(String empID, String fName, double salary)
+	{
+		super(empID, fName, salary);
+	}
 	public void displayEmp()
 	{
 		System.out.println("Employee Id : "+empID);
@@ -32,13 +40,15 @@ public class Test
 	public static void main(String args[])
 	{
 		Scanner in = new Scanner(System.in);
-		Manager ob = new Manager();
 		System.out.print("Enter the Name of the Employee :");
 		String name=in.nextLine();
 		System.out.print("Enter the Employee ID : ");
 		String id=in.nextLine();
 		System.out.print("Enter the Employee Salary : ");
 		double salary=in.nextDouble();
-		ob.
+		Manager ob = new Manager(id, name, salary);
+		System.out.print("Enter the Amount of Bonus :");
+		ob.giveBonus(in.nextDouble());
+		ob.displayEmp();
 	}
 }
