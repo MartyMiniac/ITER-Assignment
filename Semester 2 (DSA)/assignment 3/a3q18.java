@@ -66,7 +66,7 @@ class queue
 			}
 			catch(StackUnderflowException e)
 			{
-				//e.printStackTrace();
+				e.printStackTrace();
 			}
 		}
 		else
@@ -80,7 +80,7 @@ class queue
 		}
 		else
 		{
-			//System.out.print("Queue is Empty, Nothing to show");
+			System.out.print("Queue is Empty, Nothing to show");
 			return -1;
 		}
 	}
@@ -94,7 +94,7 @@ class queue
 			}
 			catch(StackOverflowException e)
 			{
-				//e.printStackTrace();
+				e.printStackTrace();
 			}
 		}
 		else
@@ -106,16 +106,8 @@ class queue
 	int[] show()
 	{
 		if(top==-1)
-		{
-			try
-			{
-				throw new QueueEmptyException("Queue is empty Nothing to Show");
-			}
-			catch(QueueEmptyException e)
-			{
-				//e.printStackTrace();
+		{			
 				return null;
-			}
 		}
 		else
 		{
@@ -154,13 +146,6 @@ class StackUnderflowException extends Exception
 class StackOverflowException extends Exception
 {
 	StackOverflowException(String s)
-	{
-		super(s);
-	}
-}
-class QueueEmptyException extends Exception
-{
-	QueueEmptyException(String s)
 	{
 		super(s);
 	}
