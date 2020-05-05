@@ -1,29 +1,21 @@
+
 public class Node
 {
-	protected Node next;
 	protected int regd_no;
-	protected float marks;
-	
-	Node()
-	{
-		next=null;
-	}
-	Node(int regd_no, float marks)
+	protected float mark;
+	protected Node next;
+	Node(int regd_no, float mark)
 	{
 		this.regd_no=regd_no;
-		this.marks=marks;
-		next=null;
+		this.mark=mark;
+		this.next=null;
 	}
-	void setMarks(float marks)
+	public float getMarks()
 	{
-		this.marks=marks;
+		return mark;
 	}
-	int getregd_no()
+	public int getRegd_no()
 	{
 		return regd_no;
-	}
-	float getmarks()
-	{
-		return marks;
 	}
 }

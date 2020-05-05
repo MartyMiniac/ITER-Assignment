@@ -1,200 +1,401 @@
-import java.util.*;
+import java.util.Scanner;
 public class LinkedList
 {
-	Node head;
-	LinkedList()
+	public static Node create(Node start)
 	{
-		head=null;
+		Scanner in = new Scanner(System.in);
+		System.out.print("Enter Regd_no :");
+		int r=in.nextInt();
+		System.out.print("Enter Marks :");
+		float m=in.nextFloat();
+		start = new Node(r,m);
+		return start;
 	}
+	public static void display(Node start)
+	{
+		Node n=start;
+		if(n==null)
+		{
+			System.out.println("Linked List is Empty");
+		}
+		else
+		{
+			int i=0;
+			System.out.println("Position Number\tRegd No.\tMarks");
+			do
+			{
+				System.out.println(i++ + "\t\t"+n.getRegd_no()+"\t\t"+n.getMarks());
+				n=n.next;
+			}
+			while(n!=null);
+		}
+	}
+	
 	//Insertion
-	public void InsBeg(Node start)
+	
+	public static Node InsBeg(Node start)
 	{
-		if(head==null)
+		if(start==null)
 		{
-			this.head=start;
-			head = new Node(start.getregd_no(),start.getmarks());
-		}
-		else
-		{
-			Node n = new Node(start.getregd_no(),start.getmarks());
-			n.next=head;
-			head=n;
-		}
-	}
-	public void InsEnd(Node start)
-	{
-		Node t=head;
-		if(head==null)
-		{
-			this.head=start;
-			head = new Node(start.getregd_no(),start.getmarks());
-		}
-		else
-		{
-			while(t.next!=null)
-			{
-				t=t.next;
-			}
-			t.next= new Node(start.getregd_no(),start.getmarks());
-		}
-	}
-	public void InsAny(int l, Node start)
-	{
-		l--;
-		Node n=head;
-		int c=0;
-		while(n.next!=null)
-		{
-			c++;
-			if(c==l)
-				break;
-			n=n.next;
-		}
-		Node add = new Node(start.getregd_no(),start.getmarks());
-		add.next=n.next;
-		n.next=add;
-	}
-	//Deletion
-	public void DelBeg()
-	{
-		head=head.next;
-	}
-	public void DelEnd()
-	{
-		int len=this.count();
-		len=len-1;
-		Node n=head;
-		int c=0;
-		while(n.next!=null)
-		{
-			c++;
-			if(c==len)
-				break;
-			n=n.next;
-		}
-		n.next=null;
-	}
-	public void DelAny(int no)
-	{
-		int t=0;
-		Node n=head;
-		while(n.next!=null)
-		{
-			t++;
-			if(n.getregd_no()==no)
-				break;
-			n=n.next;
-		}
-		n=head;
-		t--;
-		int c=0;
-		while(n.next!=null)
-		{
-			c++;
-			if(c==t)
-				break;
-			n=n.next;
-		}
-		n.next=(n.next).next;
-	}
-	public void search(int no)
-	{
-		boolean k=false;
-		Node n=head;
-		while(n.next!=null)
-		{
-			if(n.getregd_no()==no)
-			{
-				k=true;
-				break;
-			}
-			n=n.next;
-		}
-		if(k==false)
-		{
-			System.out.print("Element not Found");
+			start=create(start);
+			return start;
 		}
 		else
 		{
 			Scanner in = new Scanner(System.in);
-			System.out.println("Element Found");
-			System.out.print("Enter the Updated Marks :");
-			n.setMarks(in.nextFloat());
-		}		
-	}
-	public void sort()
-	{
-		Node n=head;
-		double arr[][] = new double[this.count()][2];
-		for(int i=0; i<arr.length; i++)
-		{
-			arr[i][0]=n.getregd_no();
-			arr[i][1]=n.getmarks();
-			n=n.next;
+			System.out.print("Enter Regd_no :");
+			int r=in.nextInt();
+			System.out.print("Enter Marks :");
+			float m=in.nextFloat();
+			Node n = new Node(r,m);
+			n.next=start;
+			return n;
 		}
-		for(int i=0; i<arr.length-1; i++)
+	}
+	public static Node InsEnd(Node start)
+	{
+		if(start==null)
 		{
-			for(int j=i+1; j<arr.length; j++)
+			start=create(start);
+			return start;
+		}
+		else
+		{
+			Scanner in = new Scanner(System.in);
+			System.out.print("Enter Regd_no :");
+			int r=in.nextInt();
+			System.out.print("Enter Marks :");
+			float m=in.nextFloat();
+			Node t=start;
+			while(t.next!=null)
 			{
-				if(arr[i][1]<arr[j][1])
+				t=t.next;
+			}
+			Node n = new Node(r,m);
+			t.next=n;
+			return start;
+		}
+	}
+	public static Node InsAny(Node start)
+	{
+		Scanner in  = new Scanner(System.in);
+		System.out.print("Enter the Postion number to insert Node at :");
+		int p=in.nextInt();
+		if(p==0)
+		{
+			return InsBeg(start);
+		}
+		else
+		{
+			Node n = start;
+			for(int i=0; i<p-1; i++)
+			{
+				try
 				{
-					double t=arr[i][1];
-					arr[i][1]=arr[j][1];
-					arr[j][1]=t;
-					t=arr[i][0];
-					arr[i][0]=arr[j][0];
-					arr[j][0]=t;
+					n=n.next;
+					if(n==null)
+						throw new NullPointerException();
+				}
+				catch(NullPointerException e)
+				{
+					System.out.println("Failed : Position entered in greater than the size of Linked List");
+					return start;
 				}
 			}
+			System.out.print("Enter Regd_no :");
+			int r=in.nextInt();
+			System.out.print("Enter Marks :");
+			float m=in.nextFloat();
+			Node t = new Node(r,m);
+			t.next=n.next;
+			n.next=t;
+			return start;
 		}
-		LinkedList ob = new LinkedList();
-		for(int i=0; i<arr.length; i++)
-		{
-			Node nn = new Node((int)arr[i][0],(float)arr[i][1]);
-			ob.InsEnd(nn);
-		}
-		this.head=ob.head;
 	}
-	public int count()
+	
+	//Deletion
+	
+	public static Node DelBeg(Node start)
 	{
-		int c=0;
-		Node n=head;
-		while(n.next!=null)
+		try
 		{
-			c++;
+			Node n=start;
+			n=n.next;
+			System.out.println("Deletion Successful");
+			return n;
+		}
+		catch(NullPointerException e)
+		{
+			System.out.println("Please Create a Linked List First");
+			return null;
+		}
+	}	
+	public static Node DelEnd(Node start)
+	{
+		Node n=start;
+		if(n==null)
+		{
+			System.out.println("Please Create a Linked List First");			
+			return start;
+		}
+		else if(n.next==null)
+		{
+			System.out.println("Deletion Successful");
+			return null;
+		}
+		else
+		{
+			while(n.next.next!=null)
+			{
+				n=n.next;
+			}
+			n.next=null;
+			System.out.println("Deletion Successful");
+			return start;
+		}
+	}
+	public static Node DelAny(Node start)
+	{
+		Scanner in  = new Scanner(System.in);
+		System.out.print("Enter the Postion number to Delete Node at :");
+		int p=in.nextInt();
+		if(p==0)
+		{
+			return DelBeg(start);
+		}
+		else
+		{
+			Node n = start;
+			for(int i=0; i<p-1; i++)
+			{
+				try
+				{
+					n=n.next;
+					if(n==null)
+						throw new NullPointerException();
+				}
+				catch(NullPointerException e)
+				{
+					System.out.println("Failed : Position entered in greater than the size of Linked List");
+					return start;
+				}
+			}
+			try
+			{
+				Node t=n;
+				t=t.next;
+				n.next=t.next;
+				System.out.println("Deletion Successful");
+			}
+			catch(NullPointerException e)
+			{
+				System.out.println("This Node Doesn't Exists");
+			}
+			return start;
+		}
+	}
+	
+	//search
+	public static void search(Node start)
+	{
+		Scanner in = new Scanner(System.in);
+		System.out.print("Enter the Regd_no. to be searched : ");
+		int se=in.nextInt();
+		boolean k=false;
+		Node n=start;
+		while(n!=null)
+		{
+			if(n.getRegd_no()==se)
+			{
+				k=true;
+				break;
+			}
+			else
+			{
+				n=n.next;
+			}
+		}
+		if(k)
+		{
+			System.out.println(n.getRegd_no()+" has got "+n.getMarks()+" marks");
+		}
+		else
+		{
+			System.out.println("Search Element not found");
+		}
+	}
+	
+	//sort
+	public static Node sort(Node start)
+	{
+		if(start==null)
+		{
+			System.out.println("Linked List is Empty");
+			return null;
+		}
+		else
+		{
+			int len=count(start);
+			float arr_m[] = new float[len];
+			int arr_r[] = new int[len];
+			Node n=start;
+			for(int i=0; i<len; i++)
+			{
+				arr_m[i]=n.getMarks();
+				arr_r[i]=n.getRegd_no();
+				n=n.next;
+			}
+			for(int i=0; i<len-1; i++)
+			{
+				for(int j=i; j<len; j++)
+				{
+					if(arr_m[i]>arr_m[j])
+					{
+						float t1=arr_m[i];
+						arr_m[i]=arr_m[j];
+						arr_m[j]=t1;
+						int t2=arr_r[i];
+						arr_r[i]=arr_r[j];
+						arr_r[j]=t2;
+					}
+				}
+			}
+			n = new Node(arr_r[0],arr_m[0]);
+			start=n;
+			for(int i=1; i<len; i++)
+			{
+				n.next= new Node(arr_r[i],arr_m[i]);
+				n=n.next;
+			}
+			System.out.println("Linked List Sorted");
+			return start;
+		}
+	}
+	
+	//count
+	public static int count(Node start)
+	{
+		int i=0;
+		Node n=start;
+		while(n!=null)
+		{
+			i++;
 			n=n.next;
 		}
-		c++;
-		return c;
+		return i;
 	}
-	public void reverse()
+	
+	//reverse
+	public static Node reverse(Node start)
 	{
-		Node n=head;
-		double arr[][] = new double[this.count()][2];
-		for(int i=0; i<arr.length; i++)
+		if(start==null)
 		{
-			arr[i][0]=n.getregd_no();
-			arr[i][1]=n.getmarks();
-			n=n.next;
+			System.out.println("Linked List is Empty");
+			return null;
 		}
-		LinkedList ob = new LinkedList();
-		for(int i=arr.length-1; i>=0; i--)
+		else
 		{
-			Node nn = new Node((int)arr[i][0],(float)arr[i][1]);
-			ob.InsEnd(nn);
+			int len=count(start);
+			float arr_m[] = new float[len];
+			int arr_r[] = new int[len];
+			Node n=start;
+			for(int i=0; i<len; i++)
+			{
+				arr_m[i]=n.getMarks();
+				arr_r[i]=n.getRegd_no();
+				n=n.next;
+			}
+			for(int i=0; i<len/2; i++)
+			{				
+				float t1=arr_m[len-i-1];
+				arr_m[len-i-1]=arr_m[i];
+				arr_m[i]=t1;
+				int t2=arr_r[len-i-1];
+				arr_r[len-i-1]=arr_r[i];
+				arr_r[i]=t2;
+			}
+			n = new Node(arr_r[0],arr_m[0]);
+			start=n;
+			for(int i=1; i<len; i++)
+			{
+				n.next= new Node(arr_r[i],arr_m[i]);
+				n=n.next;
+			}
+			System.out.println("Linked List Reversed");
+			return start;
 		}
-		this.head=ob.head;
 	}
-	public void display()
+	
+	
+	//Main Method
+	public static void main(String[] args) 
 	{
-		Node n=head;
-		while(n.next!=null)
-		{
-			System.out.println("Regd Number :"+n.getregd_no());
-			System.out.println("Marks :"+n.getmarks());
-			n=n.next;
+		Node start=null;
+		Scanner sc = new Scanner(System.in);
+		while(true)
+		{	
+			System.out.println("****MENU*****");
+			System.out.println("0:Exit");
+			System.out.println("1:Creation");
+			System.out.println("2:Display");
+			System.out.println("3:Insert in Begining");
+			System.out.println("4:Insert in Ending");
+			System.out.println("5:Insert at any Positon");
+			System.out.println("6:Delete in Begining");
+			System.out.println("7:Delete in Ending");
+			System.out.println("8:Delete at any Positon");
+			System.out.println("9:Search the Linked List");
+			System.out.println("10:Sort the Linked List");
+			System.out.println("11:Count the number of elements in the Linked List");
+			System.out.println("12:Reverse the Linked List");
+			
+			System.out.println("Enter the choice");
+			int choice=sc.nextInt();
+			switch(choice)
+			{
+				case 0:
+					System.out.println("Exiting The Program");
+					sc.close();
+					System.exit(0);
+				case 1:
+					start=create(start);
+				break;
+				case 2:
+					display(start);
+				break;
+				case 3:
+					start=InsBeg(start);
+				break;
+				case 4:
+					start=InsEnd(start);
+				break;
+				case 5:
+					start=InsAny(start);
+				break;
+				case 6:
+					start=DelBeg(start);
+				break;
+				case 7:
+					start=DelEnd(start);
+				break;
+				case 8:
+					start=DelAny(start);
+				break;
+				case 9:
+					search(start);
+				break;
+				case 10:
+					start=sort(start);
+				break;
+				case 11:
+					System.out.println("Number of Nodes in the Linked List ="+count(start));
+				break;
+				case 12:
+					start=reverse(start);
+				break;
+				default:
+					System.out.println("Wrong choice");
+			}
 		}
-		System.out.println("Regd Number :"+n.getregd_no());
-		System.out.println("Marks :"+n.getmarks());
 	}
 }
