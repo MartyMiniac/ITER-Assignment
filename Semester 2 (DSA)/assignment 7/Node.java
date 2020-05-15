@@ -1,23 +1,10 @@
 public class Node
 {
-	protected Node next;
-	protected int data;
-	
-	Node()
+	int info;
+	Node next;
+	Node(int info)
 	{
-		next=null;
-	}
-	Node(int data)
-	{
-		this.data=data;
-		next=null;
-	}
-	int getdata()
-	{
-		return data;
-	}
-	public String toString()
-	{
-		return data+"";
+		this.info=info;
+		this.next=null;
 	}
 }
