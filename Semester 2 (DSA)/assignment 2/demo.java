@@ -1,6 +1,6 @@
 //a2q1.java
 import java.util.*;
-public class demo
+public class Demo
 {
     public static void main(String args[])
     {
