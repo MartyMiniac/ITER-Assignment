@@ -1,3 +1,4 @@
+/* soundex name comparison*/
 import java.util.Scanner;
 
 public class a3q2 {
