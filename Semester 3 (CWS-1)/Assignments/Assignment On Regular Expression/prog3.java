@@ -11,15 +11,17 @@ class prog3
     	System.out.print("Enter a String : ");
     	String url=in.nextLine();
     	in.close();
-        String regex = "((http|https)://)(www.)?"
-                + "[a-zA-Z0-9@:%._\\+~#?&//=]"
-                + "{2,256}\\.[a-z]"
-                + "{2,6}\\b([-a-zA-Z0-9@:%"
-                + "._\\+~#?&//=]*)";
+        String regex="\\w+@\\w+(\\.\\w+)";
    
         Pattern p = Pattern.compile(regex);
-        Matcher m = p.matcher(url);
-        if (m.matches())
+        Matcher m1 = p.matcher(url);
+        
+        regex="(http:\\/\\/|https:\\/\\/)?([w]{3}\\.)?\\w+(\\.(com|in|org|ac|gov|co))+";
+        
+        p = Pattern.compile(regex);
+        Matcher m2 = p.matcher(url);
+        
+        if (m1.matches()||m2.matches())
         {
             System.out.println("Yes");
         }
