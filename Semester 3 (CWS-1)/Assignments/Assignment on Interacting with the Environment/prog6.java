@@ -4,8 +4,8 @@ import java.io.File;
 
 public class prog6 {
     public static void main(String[] args) {
-        File f = new File("C:\\Users\\mayan\\Downloads");
-        String[] List = f.list();
+        File f1 = new File("C:\\Users\\mayan\\Downloads");
+        String[] List = f1.list();
         for(String str1 : List) {
             int i = str1.lastIndexOf('.');
             String ext=str1.substring(i+1);
